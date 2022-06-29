@@ -1,0 +1,336 @@
+Created by PLY version 3.11 (http://www.dabeaz.com/ply)
+
+Grammar
+
+Rule 0     S' -> INITIAL
+Rule 1     INITIAL -> corchete_abierto EXPRESIONES corchete_cerrado
+Rule 2     INITIAL -> parentesis_abierto EXPRESIONES parentesis_cerrado
+Rule 3     INITIAL -> EXPRESIONES
+Rule 4     EXPRESIONES -> EXPRESIONES INSTRUCCIONES
+Rule 5     EXPRESIONES -> INSTRUCCIONES
+Rule 6     INSTRUCCIONES -> numeros
+Rule 7     INSTRUCCIONES -> letras
+Rule 8     INSTRUCCIONES -> corchete_abierto EXPRESIONES corchete_cerrado
+Rule 9     INSTRUCCIONES -> parentesis_abierto EXPRESIONES parentesis_cerrado
+
+Terminals, with rules where they appear
+
+corchete_abierto     : 1 8
+corchete_cerrado     : 1 8
+error                : 
+letras               : 7
+numeros              : 6
+parentesis_abierto   : 2 9
+parentesis_cerrado   : 2 9
+
+Nonterminals, with rules where they appear
+
+EXPRESIONES          : 1 2 3 4 8 9
+INITIAL              : 0
+INSTRUCCIONES        : 4 5
+
+Parsing method: LALR
+
+state 0
+
+    (0) S' -> . INITIAL
+    (1) INITIAL -> . corchete_abierto EXPRESIONES corchete_cerrado
+    (2) INITIAL -> . parentesis_abierto EXPRESIONES parentesis_cerrado
+    (3) INITIAL -> . EXPRESIONES
+    (4) EXPRESIONES -> . EXPRESIONES INSTRUCCIONES
+    (5) EXPRESIONES -> . INSTRUCCIONES
+    (6) INSTRUCCIONES -> . numeros
+    (7) INSTRUCCIONES -> . letras
+    (8) INSTRUCCIONES -> . corchete_abierto EXPRESIONES corchete_cerrado
+    (9) INSTRUCCIONES -> . parentesis_abierto EXPRESIONES parentesis_cerrado
+
+    corchete_abierto shift and go to state 2
+    parentesis_abierto shift and go to state 4
+    numeros         shift and go to state 6
+    letras          shift and go to state 7
+
+    INITIAL                        shift and go to state 1
+    EXPRESIONES                    shift and go to state 3
+    INSTRUCCIONES                  shift and go to state 5
+
+state 1
+
+    (0) S' -> INITIAL .
+
+
+
+state 2
+
+    (1) INITIAL -> corchete_abierto . EXPRESIONES corchete_cerrado
+    (8) INSTRUCCIONES -> corchete_abierto . EXPRESIONES corchete_cerrado
+    (4) EXPRESIONES -> . EXPRESIONES INSTRUCCIONES
+    (5) EXPRESIONES -> . INSTRUCCIONES
+    (6) INSTRUCCIONES -> . numeros
+    (7) INSTRUCCIONES -> . letras
+    (8) INSTRUCCIONES -> . corchete_abierto EXPRESIONES corchete_cerrado
+    (9) INSTRUCCIONES -> . parentesis_abierto EXPRESIONES parentesis_cerrado
+
+    numeros         shift and go to state 6
+    letras          shift and go to state 7
+    corchete_abierto shift and go to state 8
+    parentesis_abierto shift and go to state 10
+
+    EXPRESIONES                    shift and go to state 9
+    INSTRUCCIONES                  shift and go to state 5
+
+state 3
+
+    (3) INITIAL -> EXPRESIONES .
+    (4) EXPRESIONES -> EXPRESIONES . INSTRUCCIONES
+    (6) INSTRUCCIONES -> . numeros
+    (7) INSTRUCCIONES -> . letras
+    (8) INSTRUCCIONES -> . corchete_abierto EXPRESIONES corchete_cerrado
+    (9) INSTRUCCIONES -> . parentesis_abierto EXPRESIONES parentesis_cerrado
+
+    $end            reduce using rule 3 (INITIAL -> EXPRESIONES .)
+    numeros         shift and go to state 6
+    letras          shift and go to state 7
+    corchete_abierto shift and go to state 8
+    parentesis_abierto shift and go to state 10
+
+    INSTRUCCIONES                  shift and go to state 11
+
+state 4
+
+    (2) INITIAL -> parentesis_abierto . EXPRESIONES parentesis_cerrado
+    (9) INSTRUCCIONES -> parentesis_abierto . EXPRESIONES parentesis_cerrado
+    (4) EXPRESIONES -> . EXPRESIONES INSTRUCCIONES
+    (5) EXPRESIONES -> . INSTRUCCIONES
+    (6) INSTRUCCIONES -> . numeros
+    (7) INSTRUCCIONES -> . letras
+    (8) INSTRUCCIONES -> . corchete_abierto EXPRESIONES corchete_cerrado
+    (9) INSTRUCCIONES -> . parentesis_abierto EXPRESIONES parentesis_cerrado
+
+    numeros         shift and go to state 6
+    letras          shift and go to state 7
+    corchete_abierto shift and go to state 8
+    parentesis_abierto shift and go to state 10
+
+    EXPRESIONES                    shift and go to state 12
+    INSTRUCCIONES                  shift and go to state 5
+
+state 5
+
+    (5) EXPRESIONES -> INSTRUCCIONES .
+
+    numeros         reduce using rule 5 (EXPRESIONES -> INSTRUCCIONES .)
+    letras          reduce using rule 5 (EXPRESIONES -> INSTRUCCIONES .)
+    corchete_abierto reduce using rule 5 (EXPRESIONES -> INSTRUCCIONES .)
+    parentesis_abierto reduce using rule 5 (EXPRESIONES -> INSTRUCCIONES .)
+    $end            reduce using rule 5 (EXPRESIONES -> INSTRUCCIONES .)
+    corchete_cerrado reduce using rule 5 (EXPRESIONES -> INSTRUCCIONES .)
+    parentesis_cerrado reduce using rule 5 (EXPRESIONES -> INSTRUCCIONES .)
+
+
+state 6
+
+    (6) INSTRUCCIONES -> numeros .
+
+    numeros         reduce using rule 6 (INSTRUCCIONES -> numeros .)
+    letras          reduce using rule 6 (INSTRUCCIONES -> numeros .)
+    corchete_abierto reduce using rule 6 (INSTRUCCIONES -> numeros .)
+    parentesis_abierto reduce using rule 6 (INSTRUCCIONES -> numeros .)
+    $end            reduce using rule 6 (INSTRUCCIONES -> numeros .)
+    corchete_cerrado reduce using rule 6 (INSTRUCCIONES -> numeros .)
+    parentesis_cerrado reduce using rule 6 (INSTRUCCIONES -> numeros .)
+
+
+state 7
+
+    (7) INSTRUCCIONES -> letras .
+
+    numeros         reduce using rule 7 (INSTRUCCIONES -> letras .)
+    letras          reduce using rule 7 (INSTRUCCIONES -> letras .)
+    corchete_abierto reduce using rule 7 (INSTRUCCIONES -> letras .)
+    parentesis_abierto reduce using rule 7 (INSTRUCCIONES -> letras .)
+    $end            reduce using rule 7 (INSTRUCCIONES -> letras .)
+    corchete_cerrado reduce using rule 7 (INSTRUCCIONES -> letras .)
+    parentesis_cerrado reduce using rule 7 (INSTRUCCIONES -> letras .)
+
+
+state 8
+
+    (8) INSTRUCCIONES -> corchete_abierto . EXPRESIONES corchete_cerrado
+    (4) EXPRESIONES -> . EXPRESIONES INSTRUCCIONES
+    (5) EXPRESIONES -> . INSTRUCCIONES
+    (6) INSTRUCCIONES -> . numeros
+    (7) INSTRUCCIONES -> . letras
+    (8) INSTRUCCIONES -> . corchete_abierto EXPRESIONES corchete_cerrado
+    (9) INSTRUCCIONES -> . parentesis_abierto EXPRESIONES parentesis_cerrado
+
+    numeros         shift and go to state 6
+    letras          shift and go to state 7
+    corchete_abierto shift and go to state 8
+    parentesis_abierto shift and go to state 10
+
+    EXPRESIONES                    shift and go to state 13
+    INSTRUCCIONES                  shift and go to state 5
+
+state 9
+
+    (1) INITIAL -> corchete_abierto EXPRESIONES . corchete_cerrado
+    (8) INSTRUCCIONES -> corchete_abierto EXPRESIONES . corchete_cerrado
+    (4) EXPRESIONES -> EXPRESIONES . INSTRUCCIONES
+    (6) INSTRUCCIONES -> . numeros
+    (7) INSTRUCCIONES -> . letras
+    (8) INSTRUCCIONES -> . corchete_abierto EXPRESIONES corchete_cerrado
+    (9) INSTRUCCIONES -> . parentesis_abierto EXPRESIONES parentesis_cerrado
+
+    corchete_cerrado shift and go to state 14
+    numeros         shift and go to state 6
+    letras          shift and go to state 7
+    corchete_abierto shift and go to state 8
+    parentesis_abierto shift and go to state 10
+
+    INSTRUCCIONES                  shift and go to state 11
+
+state 10
+
+    (9) INSTRUCCIONES -> parentesis_abierto . EXPRESIONES parentesis_cerrado
+    (4) EXPRESIONES -> . EXPRESIONES INSTRUCCIONES
+    (5) EXPRESIONES -> . INSTRUCCIONES
+    (6) INSTRUCCIONES -> . numeros
+    (7) INSTRUCCIONES -> . letras
+    (8) INSTRUCCIONES -> . corchete_abierto EXPRESIONES corchete_cerrado
+    (9) INSTRUCCIONES -> . parentesis_abierto EXPRESIONES parentesis_cerrado
+
+    numeros         shift and go to state 6
+    letras          shift and go to state 7
+    corchete_abierto shift and go to state 8
+    parentesis_abierto shift and go to state 10
+
+    EXPRESIONES                    shift and go to state 15
+    INSTRUCCIONES                  shift and go to state 5
+
+state 11
+
+    (4) EXPRESIONES -> EXPRESIONES INSTRUCCIONES .
+
+    numeros         reduce using rule 4 (EXPRESIONES -> EXPRESIONES INSTRUCCIONES .)
+    letras          reduce using rule 4 (EXPRESIONES -> EXPRESIONES INSTRUCCIONES .)
+    corchete_abierto reduce using rule 4 (EXPRESIONES -> EXPRESIONES INSTRUCCIONES .)
+    parentesis_abierto reduce using rule 4 (EXPRESIONES -> EXPRESIONES INSTRUCCIONES .)
+    $end            reduce using rule 4 (EXPRESIONES -> EXPRESIONES INSTRUCCIONES .)
+    corchete_cerrado reduce using rule 4 (EXPRESIONES -> EXPRESIONES INSTRUCCIONES .)
+    parentesis_cerrado reduce using rule 4 (EXPRESIONES -> EXPRESIONES INSTRUCCIONES .)
+
+
+state 12
+
+    (2) INITIAL -> parentesis_abierto EXPRESIONES . parentesis_cerrado
+    (9) INSTRUCCIONES -> parentesis_abierto EXPRESIONES . parentesis_cerrado
+    (4) EXPRESIONES -> EXPRESIONES . INSTRUCCIONES
+    (6) INSTRUCCIONES -> . numeros
+    (7) INSTRUCCIONES -> . letras
+    (8) INSTRUCCIONES -> . corchete_abierto EXPRESIONES corchete_cerrado
+    (9) INSTRUCCIONES -> . parentesis_abierto EXPRESIONES parentesis_cerrado
+
+    parentesis_cerrado shift and go to state 16
+    numeros         shift and go to state 6
+    letras          shift and go to state 7
+    corchete_abierto shift and go to state 8
+    parentesis_abierto shift and go to state 10
+
+    INSTRUCCIONES                  shift and go to state 11
+
+state 13
+
+    (8) INSTRUCCIONES -> corchete_abierto EXPRESIONES . corchete_cerrado
+    (4) EXPRESIONES -> EXPRESIONES . INSTRUCCIONES
+    (6) INSTRUCCIONES -> . numeros
+    (7) INSTRUCCIONES -> . letras
+    (8) INSTRUCCIONES -> . corchete_abierto EXPRESIONES corchete_cerrado
+    (9) INSTRUCCIONES -> . parentesis_abierto EXPRESIONES parentesis_cerrado
+
+    corchete_cerrado shift and go to state 17
+    numeros         shift and go to state 6
+    letras          shift and go to state 7
+    corchete_abierto shift and go to state 8
+    parentesis_abierto shift and go to state 10
+
+    INSTRUCCIONES                  shift and go to state 11
+
+state 14
+
+    (1) INITIAL -> corchete_abierto EXPRESIONES corchete_cerrado .
+    (8) INSTRUCCIONES -> corchete_abierto EXPRESIONES corchete_cerrado .
+
+  ! reduce/reduce conflict for $end resolved using rule 1 (INITIAL -> corchete_abierto EXPRESIONES corchete_cerrado .)
+    $end            reduce using rule 1 (INITIAL -> corchete_abierto EXPRESIONES corchete_cerrado .)
+    numeros         reduce using rule 8 (INSTRUCCIONES -> corchete_abierto EXPRESIONES corchete_cerrado .)
+    letras          reduce using rule 8 (INSTRUCCIONES -> corchete_abierto EXPRESIONES corchete_cerrado .)
+    corchete_abierto reduce using rule 8 (INSTRUCCIONES -> corchete_abierto EXPRESIONES corchete_cerrado .)
+    parentesis_abierto reduce using rule 8 (INSTRUCCIONES -> corchete_abierto EXPRESIONES corchete_cerrado .)
+
+  ! $end            [ reduce using rule 8 (INSTRUCCIONES -> corchete_abierto EXPRESIONES corchete_cerrado .) ]
+
+
+state 15
+
+    (9) INSTRUCCIONES -> parentesis_abierto EXPRESIONES . parentesis_cerrado
+    (4) EXPRESIONES -> EXPRESIONES . INSTRUCCIONES
+    (6) INSTRUCCIONES -> . numeros
+    (7) INSTRUCCIONES -> . letras
+    (8) INSTRUCCIONES -> . corchete_abierto EXPRESIONES corchete_cerrado
+    (9) INSTRUCCIONES -> . parentesis_abierto EXPRESIONES parentesis_cerrado
+
+    parentesis_cerrado shift and go to state 18
+    numeros         shift and go to state 6
+    letras          shift and go to state 7
+    corchete_abierto shift and go to state 8
+    parentesis_abierto shift and go to state 10
+
+    INSTRUCCIONES                  shift and go to state 11
+
+state 16
+
+    (2) INITIAL -> parentesis_abierto EXPRESIONES parentesis_cerrado .
+    (9) INSTRUCCIONES -> parentesis_abierto EXPRESIONES parentesis_cerrado .
+
+  ! reduce/reduce conflict for $end resolved using rule 2 (INITIAL -> parentesis_abierto EXPRESIONES parentesis_cerrado .)
+    $end            reduce using rule 2 (INITIAL -> parentesis_abierto EXPRESIONES parentesis_cerrado .)
+    numeros         reduce using rule 9 (INSTRUCCIONES -> parentesis_abierto EXPRESIONES parentesis_cerrado .)
+    letras          reduce using rule 9 (INSTRUCCIONES -> parentesis_abierto EXPRESIONES parentesis_cerrado .)
+    corchete_abierto reduce using rule 9 (INSTRUCCIONES -> parentesis_abierto EXPRESIONES parentesis_cerrado .)
+    parentesis_abierto reduce using rule 9 (INSTRUCCIONES -> parentesis_abierto EXPRESIONES parentesis_cerrado .)
+
+  ! $end            [ reduce using rule 9 (INSTRUCCIONES -> parentesis_abierto EXPRESIONES parentesis_cerrado .) ]
+
+
+state 17
+
+    (8) INSTRUCCIONES -> corchete_abierto EXPRESIONES corchete_cerrado .
+
+    corchete_cerrado reduce using rule 8 (INSTRUCCIONES -> corchete_abierto EXPRESIONES corchete_cerrado .)
+    numeros         reduce using rule 8 (INSTRUCCIONES -> corchete_abierto EXPRESIONES corchete_cerrado .)
+    letras          reduce using rule 8 (INSTRUCCIONES -> corchete_abierto EXPRESIONES corchete_cerrado .)
+    corchete_abierto reduce using rule 8 (INSTRUCCIONES -> corchete_abierto EXPRESIONES corchete_cerrado .)
+    parentesis_abierto reduce using rule 8 (INSTRUCCIONES -> corchete_abierto EXPRESIONES corchete_cerrado .)
+    $end            reduce using rule 8 (INSTRUCCIONES -> corchete_abierto EXPRESIONES corchete_cerrado .)
+    parentesis_cerrado reduce using rule 8 (INSTRUCCIONES -> corchete_abierto EXPRESIONES corchete_cerrado .)
+
+
+state 18
+
+    (9) INSTRUCCIONES -> parentesis_abierto EXPRESIONES parentesis_cerrado .
+
+    corchete_cerrado reduce using rule 9 (INSTRUCCIONES -> parentesis_abierto EXPRESIONES parentesis_cerrado .)
+    numeros         reduce using rule 9 (INSTRUCCIONES -> parentesis_abierto EXPRESIONES parentesis_cerrado .)
+    letras          reduce using rule 9 (INSTRUCCIONES -> parentesis_abierto EXPRESIONES parentesis_cerrado .)
+    corchete_abierto reduce using rule 9 (INSTRUCCIONES -> parentesis_abierto EXPRESIONES parentesis_cerrado .)
+    parentesis_abierto reduce using rule 9 (INSTRUCCIONES -> parentesis_abierto EXPRESIONES parentesis_cerrado .)
+    $end            reduce using rule 9 (INSTRUCCIONES -> parentesis_abierto EXPRESIONES parentesis_cerrado .)
+    parentesis_cerrado reduce using rule 9 (INSTRUCCIONES -> parentesis_abierto EXPRESIONES parentesis_cerrado .)
+
+WARNING: 
+WARNING: Conflicts:
+WARNING: 
+WARNING: reduce/reduce conflict in state 14 resolved using rule (INITIAL -> corchete_abierto EXPRESIONES corchete_cerrado)
+WARNING: rejected rule (INSTRUCCIONES -> corchete_abierto EXPRESIONES corchete_cerrado) in state 14
+WARNING: reduce/reduce conflict in state 16 resolved using rule (INITIAL -> parentesis_abierto EXPRESIONES parentesis_cerrado)
+WARNING: rejected rule (INSTRUCCIONES -> parentesis_abierto EXPRESIONES parentesis_cerrado) in state 16
